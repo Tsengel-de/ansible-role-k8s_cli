@@ -1,0 +1,27 @@
+---
+
+install_helm: true
+install_kubectl: true
+
+# OS and hardware architectire
+k8s_platform: linux
+k8s_arch: amd64
+
+# Helm and kubectl versions to install
+# See available releases: https://github.com/helm/helm/releases/
+helm_version: 'v3.6.3'
+# See stable release in https://dl.k8s.io/release/stable.txt
+kubectl_version: "1.21.2"
+
+helm_bin_path: /usr/local/bin/helm
+kubectl_bin_path: /usr/local/bin/kubectl
+
+# SHA512 checksum of the binary (see https://dl.k8s.io/release/v1.21.2/bin/linux/amd64/kubectl.sha512)
+kubectl_checksum_binary: "sha512:fbd688840426d312dc5930f83c427d428559b2e3eca4c95cc39fb47fde960829bfe0dbb9ccf49ec80799ef013dbb0f4f1dc7aec59678d444b88eda8168fd77a9"
+
+# Where to install "kubectl" binary
+kubectl_bin_directory: "/usr/local/bin"
+# Operating system on which "kubectl" should run on
+kubectl_platform: "linux"
+# Processor architecture "kubectl" should run on
+kubectl_arch: "amd64"

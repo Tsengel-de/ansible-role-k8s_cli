@@ -1,0 +1,23 @@
+---
+
+- name: Check if Helm binary exists.
+  stat:
+    path: "{{ helm_bin_path }}"
+  register: helm_check
+
+- name: Check Helm version.
+  command: "{{ helm_bin_path }} version"
+  failed_when: false
+  changed_when: false
+  register: helm_existing_version
+
+- name: Download helm.
+  unarchive:
+    src: https://get.helm.sh/helm-{{ helm_version }}-{{ k8s_platform }}-{{ k8s_arch }}.tar.gz
+    dest: /tmp
+    remote_src: true
+    mode: 0755
+  notify: copy helm binary
+  when: >
+    not helm_check.stat.exists
+    or helm_version not in helm_existing_version.stdout
